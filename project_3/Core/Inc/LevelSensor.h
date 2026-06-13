@@ -1,13 +1,13 @@
 /*******************************************************************************************************/
 /**
- *   @file         Bsp.h
- *   @addtogroup   Bsp
+ *   @file         LevelSensor.h
+ *   @addtogroup   LevelSensor
  *   @{
  ********************************************************************************************************/
 
-
-#ifndef BSP_H
-#define BSP_H
+ 
+#ifndef LEVEL_SENSOR_H
+#define LEVEL_SENSOR_H
 
 /***********************************************************************************************************************
  * INCLUDES NECESSARIOS
@@ -19,15 +19,18 @@
  * PROTOTIPOS PUBLICOS
  **********************************************************************************************************************/
 
-void BSP_Init(void);
+// incializar
 
-void BSP_LED_Write(uint8_t led, GPIO_PinState state);
+#define dLEVEL_SENSOR_NUMBER   20    //Numero de amostras para o filtro de media
+#define dLEVEL_SENSOR_ADC_MAX  4095 //Valor maximo do ADC de 12 bits = 2^12 - 1 = 4095
 
-void BSP_LED_Toggle(uint8_t led);
+// incializar o sensor
+void    LevelSensor_Init(void);
 
-uint8_t BSP_Button_Read(void);
+// nova amostra do sensor
+void    LevelSensor_NewSample(uint16_t rawValue);
 
-#endif /* BSP_H */
+// valor do nivel em porcentagems
+uint8_t LevelSensor_GetPercent(void);
 
-/** @} */
-
+#endif /* LEVEL_SENSOR_H */

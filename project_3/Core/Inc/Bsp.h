@@ -5,7 +5,7 @@
  *   @{
  ********************************************************************************************************/
 
-
+ 
 #ifndef BSP_H
 #define BSP_H
 
@@ -19,15 +19,18 @@
  * PROTOTIPOS PUBLICOS
  **********************************************************************************************************************/
 
+// incializar
 void BSP_Init(void);
 
-void BSP_LED_Write(uint8_t led, GPIO_PinState state);
+// escrever no pino
+void BSP_ReadPin(void);
 
-void BSP_LED_Toggle(uint8_t led);
+// ler o estado do pino
+void BSP_Timer_Start(void);
 
-uint8_t BSP_Button_Read(void);
+// verificar o timeout
+uint8_t Bsp_Timer_CheckTimeout(void);
 
 #endif /* BSP_H */
 
 /** @} */
-
