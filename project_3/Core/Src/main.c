@@ -18,7 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "Bsp.h"
+#include "LevelSensor.h"
+#include <stdio.h>
 #include "string.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -133,37 +137,21 @@ int main(void)
 
   /* USER CODE END 2 */
 
+  Bsp_Init();
+  LevelSensor_Init();
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
+  while (1){
     /* USER CODE END WHILE */
 
-    printf("\r\n========================================\r\n");
-    printf("  Sistema de Monitoramento do Tanque Inicializado \r\n");
-    printf("========================================\r\n");
-
-    if (Bsp_Timer_CheckTimeout() != 0)
-        {
-            /* A. Realiza a leitura bruta do ADC por polling através da BSP */
-            uint32_t adcRawValue = Bsp_ADC_Read();
-
-            /* B. Envia a amostra bruta para o filtro acumular e processar */
-            LevelSensor_NewSample((uint16_t)adcRawValue);
-
-            /* C. Coleta o percentual filtrado atual do tanque */
-            uint8_t tankPercent = LevelSensor_GetPercent();
-
-            /* D. Mostra o resultado atualizado no terminal via USART3 */
-            /* \r limpa a linha no terminal para o valor atualizar no mesmo lugar */
-            printf("\rNivel do Tanque: %3d%% [ADC Bruto: %4lu]", tankPercent, adcRawValue);
-            fflush(stdout); 
-        }
-      
-    printf("\r\n========================================\r\n");
-    printf("  Sistema de Monitoramento do Tanque finalizado \r\n");
-    printf("========================================\r\n");
-
+    if (Bsp_Timer_CheckTimeout() != 0){
+      uint32_t adcRawValue = Bsp_ADC_Read();
+      if (LevelSensor_NewSample((uint16_t)Bsp_ADC_Read()) == 1){
+        uint8_t tankPercent = LevelSensor_GetPercent();
+        printf("Nivel do Tanque: %3d%%, Valor Bruto: %4lu, Tensao: %.2fV\r\n",  tankPercent, adcRawValue, ((float)adcRawValue * 3.3f) / 4095.0f);
+      }
+    }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

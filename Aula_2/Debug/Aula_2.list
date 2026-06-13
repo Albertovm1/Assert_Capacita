@@ -513,7 +513,7 @@ int main(void)
  8000628:	601a      	str	r2, [r3, #0]
     if (HAL_UART_Receive(&huart3,&rx_byte,1,10) == HAL_OK){
  800062a:	e7b5      	b.n	8000598 <main+0x20>
- 800062c:	200001c7 	.word	0x200001c7
+ 800062c:	200001c6 	.word	0x200001c6
  8000630:	200002b4 	.word	0x200002b4
  8000634:	200001c8 	.word	0x200001c8
  8000638:	200001c4 	.word	0x200001c4

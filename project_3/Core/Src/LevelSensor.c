@@ -69,25 +69,29 @@ void LevelSensor_Init(void)
  * @details Quando o numero de amostras atinge dLEVEL_SENSOR_NUMBER, a media eh calculada,
  *          convertida para percentual de 0 a 100% e os contadores sao reiniciados.
  ********************************************************************************************************/
-void LevelSensor_NewSample(uint16_t rawValue)
+uint8_t LevelSensor_NewSample(uint16_t rawValue)
 {
+    uint8_t media_pronta = 0;
+
     levelSensor.acumulador += rawValue;
     levelSensor.contador++;
 
-    //Verifica se ja coletamos o numero necessario de amostras, que é 20;
+    /* Verifica se atingiu o bloco de 20 amostras */
     if (levelSensor.contador >= dLEVEL_SENSOR_NUMBER)
     {
-        // calcula a media 
         uint32_t averageRaw = levelSensor.acumulador / dLEVEL_SENSOR_NUMBER;
 
-        // converte em porcentagem
-        //Formula: (Media * 100) / Max_ADC 
+        /* Converte para porcentagem */
         levelSensor.percentagem = (uint8_t)((averageRaw * 100U) / dLEVEL_SENSOR_ADC_MAX);
 
-        // reset para o proximo bloco de codigo
+        /* Reseta para o próximo ciclo */
         levelSensor.acumulador = 0;
         levelSensor.contador = 0;
+
+        media_pronta = 1; /* Sinaliza que atualizou o valor real */
     }
+
+    return media_pronta;
 }
 
 /********************************************************************************************************

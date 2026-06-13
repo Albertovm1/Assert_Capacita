@@ -28,7 +28,7 @@
 void    LevelSensor_Init(void);
 
 // nova amostra do sensor
-void    LevelSensor_NewSample(uint16_t rawValue);
+uint8_t LevelSensor_NewSample(uint16_t rawValue);
 
 // valor do nivel em porcentagems
 uint8_t LevelSensor_GetPercent(void);
