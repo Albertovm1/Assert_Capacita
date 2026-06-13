@@ -1,0 +1,13 @@
+../Core/Src/Bmp280.c:117:16:BMP280_Init	24	static
+../Core/Src/Bmp280.c:171:6:BMP280_Handler	24	static
+../Core/Src/Bmp280.c:199:16:BMP280_TempReturn	32	static
+../Core/Src/Bmp280.c:237:16:BMP280_PressReturn	40	static
+../Core/Src/Bmp280.c:278:16:BMP280_TempAndPressReturn	40	static
+../Core/Src/Bmp280.c:315:6:BMP280_Tick	4	static
+../Core/Src/Bmp280.c:335:23:BMP280_ReadRegister	16	static
+../Core/Src/Bmp280.c:365:23:BMP280_WriteRegister	16	static
+../Core/Src/Bmp280.c:392:23:BMP280_ReadMultiplesRegister	24	static
+../Core/Src/Bmp280.c:434:23:BMP280_LoadCalibration	32	static
+../Core/Src/Bmp280.c:472:12:BMP280_CompensateTemp	32	static
+../Core/Src/Bmp280.c:501:12:BMP280_CompensatePress	328	static
+../Core/Src/Bmp280.c:536:13:BMP280_DelayMs	24	static

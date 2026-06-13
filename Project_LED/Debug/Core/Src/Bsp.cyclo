@@ -1,0 +1,4 @@
+../Core/Src/Bsp.c:81:6:BSP_Init	1
+../Core/Src/Bsp.c:117:6:BSP_LED_Write	2
+../Core/Src/Bsp.c:136:6:BSP_LED_Toggle	2
+../Core/Src/Bsp.c:157:9:BSP_Button_Read	1

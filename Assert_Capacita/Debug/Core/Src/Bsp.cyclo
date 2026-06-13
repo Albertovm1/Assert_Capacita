@@ -1,0 +1,4 @@
+../Core/Src/Bsp.c:62:6:Bsp_Init	2
+../Core/Src/Bsp.c:85:6:Bsp_Tick	1
+../Core/Src/Bsp.c:99:6:Bsp_Spi	1
+../Core/Src/Bsp.c:112:6:Bsp_GpioWrite	2
